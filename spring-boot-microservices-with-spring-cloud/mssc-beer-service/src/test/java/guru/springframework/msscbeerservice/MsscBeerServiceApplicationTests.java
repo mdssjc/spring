@@ -1,0 +1,18 @@
+package guru.springframework.msscbeerservice;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+/**
+ * @author Marcelo dos Santos
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class MsscBeerServiceApplicationTests {
+
+    @Test
+    public void contextLoads() {
+    }
+}
