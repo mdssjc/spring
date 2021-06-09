@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PersonTest {
 
     @Test
-    void groupedAsertions() {
+    void groupedAssertions() {
         // given
         Person person = new Person(1L, "Joe", "Buck");
 
@@ -22,7 +22,7 @@ class PersonTest {
     }
 
     @Test
-    void groupedAsertionMsgs() {
+    void groupedAssertionMsgs() {
         // given
         Person person = new Person(1L, "Joe", "Buck");
 
