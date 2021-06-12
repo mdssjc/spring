@@ -1,6 +1,10 @@
 package guru.springframework.sfgpetclinic.controllers;
 
-import org.junit.jupiter.api.*;
+import guru.springframework.sfgpetclinic.ControllerTests;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
 
 import java.time.Duration;
@@ -12,8 +16,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 /**
  * @author Marcelo dos Santos
  */
-@Tag("controllers")
-class IndexControllerTest {
+class IndexControllerTest implements ControllerTests {
 
     IndexController controller;
 
