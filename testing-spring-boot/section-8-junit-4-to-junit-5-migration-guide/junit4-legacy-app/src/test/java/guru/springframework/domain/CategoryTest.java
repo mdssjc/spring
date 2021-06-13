@@ -3,7 +3,7 @@ package guru.springframework.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Marcelo dos Santos
@@ -13,7 +13,7 @@ public class CategoryTest {
     Category category;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         category = new Category();
     }
 
