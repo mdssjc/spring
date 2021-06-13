@@ -1,15 +1,18 @@
 package guru.springframework.domain;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Marcelo dos Santos
+ */
 public class CategoryTest {
 
     Category category;
 
-    @Before
+    @BeforeEach
     public void setUp(){
         category = new Category();
     }
@@ -30,5 +33,4 @@ public class CategoryTest {
     @Test
     public void getRecipes() throws Exception {
     }
-
 }
