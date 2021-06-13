@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 /**
  * @author Marcelo dos Santos
  */
-public class InlineMockTest {
+class InlineMockTest {
 
     @Test
     void testInlineMock() {
