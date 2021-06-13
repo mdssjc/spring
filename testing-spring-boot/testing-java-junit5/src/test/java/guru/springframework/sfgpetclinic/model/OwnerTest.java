@@ -5,6 +5,7 @@ import org.hamcrest.core.Is;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -46,5 +47,16 @@ class OwnerTest implements ModelTests {
     @EnumSource(OwnerType.class)
     void testEnumSource(OwnerType ownerType) {
         System.out.println(ownerType);
+    }
+
+    @DisplayName("CSV Input Test")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @CsvSource({
+            "FL,1,1",
+            "OH,2,2",
+            "MI,3,1"
+    })
+    void csvInputTest(String stateName, int val1, int val2) {
+        System.out.println(stateName + " = " + val1 + ":" + val2);
     }
 }
