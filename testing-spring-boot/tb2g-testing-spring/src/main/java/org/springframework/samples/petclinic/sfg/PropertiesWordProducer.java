@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author Marcelo dos Santos
  */
-@Profile("externalize")
+@Profile({"externalize", "laurel-properties"})
 @Primary
 @Component
 public class PropertiesWordProducer implements WordProducer {
