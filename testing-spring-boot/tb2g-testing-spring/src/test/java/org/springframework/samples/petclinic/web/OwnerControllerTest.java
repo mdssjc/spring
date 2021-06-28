@@ -17,8 +17,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.reset;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -67,6 +69,33 @@ class OwnerControllerTest {
     @Test
     void testNewOwnerPostNotValid() throws Exception {
         mockMvc.perform(post("/owners/new")
+                                .param("firstName", "Jimmy")
+                                .param("lastName", "Buffet")
+                                .param("city", "Key West"))
+               .andExpect(status().isOk())
+               .andExpect(model().attributeHasErrors("owner"))
+               .andExpect(model().attributeHasFieldErrors("owner", "address"))
+               .andExpect(model().attributeHasFieldErrors("owner", "telephone"))
+               .andExpect(view().name("owners/createOrUpdateOwnerForm"));
+    }
+
+    @Test
+    void testEditOwnerValid() throws Exception {
+        doNothing().when(clinicService).saveOwner(any(Owner.class));
+
+        mockMvc.perform(post("/owners/{ownerId}/edit", 1)
+                                .param("firstName", "Jimmy")
+                                .param("lastName", "Buffet")
+                                .param("address", "123 Dual St")
+                                .param("city", "Key West")
+                                .param("telephone", "1231231234"))
+               .andExpect(status().is3xxRedirection())
+               .andExpect(redirectedUrlTemplate("/owners/{ownerId}", 1));
+    }
+
+    @Test
+    void testEditOwnerNoValid() throws Exception {
+        mockMvc.perform(post("/owners/{ownerId}/edit", 1)
                                 .param("firstName", "Jimmy")
                                 .param("lastName", "Buffet")
                                 .param("city", "Key West"))
