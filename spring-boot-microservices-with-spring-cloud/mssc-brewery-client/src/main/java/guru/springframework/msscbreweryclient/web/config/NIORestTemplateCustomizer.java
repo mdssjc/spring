@@ -33,7 +33,6 @@ public class NIORestTemplateCustomizer implements RestTemplateCustomizer {
                 .build();
 
         return new HttpComponentsAsyncClientHttpRequestFactory(httpAsyncClient);
-
     }
 
     @Override
