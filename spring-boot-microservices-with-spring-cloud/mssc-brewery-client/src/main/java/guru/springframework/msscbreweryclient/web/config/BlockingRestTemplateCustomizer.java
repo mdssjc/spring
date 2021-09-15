@@ -5,6 +5,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -17,15 +18,27 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
 
+    @Value("${connection.max-total}")
+    private int connectionMaxTotal;
+
+    @Value("${connection.default.max-per-route}")
+    private int connectionDefaultMaxPerRoute;
+
+    @Value("${connection.request.timeout}")
+    private int connectionRequestTimeout;
+
+    @Value("${connection.socket.timeout}")
+    private int connectionSocketTimeout;
+
     public ClientHttpRequestFactory clientHttpRequestFactory() {
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(100);
-        connectionManager.setDefaultMaxPerRoute(20);
+        connectionManager.setMaxTotal(connectionMaxTotal);
+        connectionManager.setDefaultMaxPerRoute(connectionDefaultMaxPerRoute);
 
         RequestConfig requestConfig = RequestConfig
                 .custom()
-                .setConnectionRequestTimeout(3000)
-                .setSocketTimeout(3000)
+                .setConnectionRequestTimeout(connectionRequestTimeout)
+                .setSocketTimeout(connectionSocketTimeout)
                 .build();
 
         CloseableHttpClient httpClient = HttpClients
