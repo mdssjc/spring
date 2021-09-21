@@ -6,10 +6,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,7 @@ import java.util.UUID;
 /**
  * @author Marcelo dos Santos
  */
+@Validated
 @RequestMapping("/api/v2/beer")
 @RestController
 public class BeerControllerV2 {
@@ -28,12 +31,12 @@ public class BeerControllerV2 {
     }
 
     @GetMapping({"/{beerId}"})
-    public HttpEntity<BeerDtoV2> getBeer(@PathVariable("beerId") UUID beerId) {
+    public HttpEntity<BeerDtoV2> getBeer(@NotNull @PathVariable("beerId") UUID beerId) {
         return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
     }
 
     @PostMapping
-    public HttpEntity<BeerDtoV2> handlePost(@Valid @RequestBody BeerDtoV2 beerDto) {
+    public HttpEntity<BeerDtoV2> handlePost(@Valid @NotNull @RequestBody BeerDtoV2 beerDto) {
         BeerDtoV2 savedDto = beerService.saveNewBeer(beerDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add(HttpHeaders.LOCATION, "/api/v2/beer/" + savedDto.getId().toString());
