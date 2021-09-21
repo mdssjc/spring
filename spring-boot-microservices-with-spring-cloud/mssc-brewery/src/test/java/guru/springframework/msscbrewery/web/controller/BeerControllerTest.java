@@ -71,8 +71,8 @@ public class BeerControllerTest {
         given(beerService.saveNewBeer(any())).willReturn(savedDto);
 
         mockMvc.perform(post("/api/v1/beer/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(beerDtoJson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(beerDtoJson))
                 .andExpect(status().isCreated());
 
     }
@@ -81,12 +81,13 @@ public class BeerControllerTest {
     public void handleUpdate() throws Exception {
         //given
         BeerDto beerDto = validBeer;
+        beerDto.setId(null);
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         //when
-        mockMvc.perform(put("/api/v1/beer/" + validBeer.getId())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(beerDtoJson))
+        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(beerDtoJson))
                 .andExpect(status().isNoContent());
 
         then(beerService).should().updateBeer(any(), any());
