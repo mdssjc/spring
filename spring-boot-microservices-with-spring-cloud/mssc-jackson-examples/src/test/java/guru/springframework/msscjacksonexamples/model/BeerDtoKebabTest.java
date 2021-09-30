@@ -7,15 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles("snake")
+/**
+ * @author Marcelo dos Santos
+ */
+@ActiveProfiles("kebab")
 @JsonTest
-class BeerDtoSnakeTest extends BaseTest {
+class BeerDtoKebabTest extends BaseTest {
 
     @Autowired
     ObjectMapper objectMapper;
 
     @Test
-    void testSnake() throws JsonProcessingException {
+    void testKebab() throws JsonProcessingException {
         BeerDto dto = getDto();
 
         String json = objectMapper.writeValueAsString(dto);
