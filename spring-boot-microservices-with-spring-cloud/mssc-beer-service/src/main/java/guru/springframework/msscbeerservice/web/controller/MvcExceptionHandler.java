@@ -1,6 +1,5 @@
 package guru.springframework.msscbeerservice.web.controller;
 
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,17 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Marcelo dos Santos
+ * Created by jt on 2019-05-25.
  */
 @ControllerAdvice
 public class MvcExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public HttpEntity<List<String>> validationErrorHandler(ConstraintViolationException e) {
-        List<String> errors = new ArrayList<>(e.getConstraintViolations().size());
+    public ResponseEntity<List> validationErrorHandler(ConstraintViolationException ex){
+        List<String> errorsList = new ArrayList<>(ex.getConstraintViolations().size());
 
-        e.getConstraintViolations().forEach(error -> errors.add(error.toString()));
+        ex.getConstraintViolations().forEach(error -> errorsList.add(error.toString()));
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorsList, HttpStatus.BAD_REQUEST);
     }
+
 }

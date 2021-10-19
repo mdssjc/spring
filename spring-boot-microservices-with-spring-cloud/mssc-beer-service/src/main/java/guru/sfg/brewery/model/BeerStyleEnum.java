@@ -1,7 +1,7 @@
-package guru.springframework.msscbeerservice.web.model;
+package guru.sfg.brewery.model;
 
 /**
- * @author Marcelo dos Santos
+ * Created by jt on 2019-05-12.
  */
 public enum BeerStyleEnum {
     LAGER, PILSNER, STOUT, GOSE, PORTER, ALE, WHEAT, IPA, PALE_ALE, SAISON
