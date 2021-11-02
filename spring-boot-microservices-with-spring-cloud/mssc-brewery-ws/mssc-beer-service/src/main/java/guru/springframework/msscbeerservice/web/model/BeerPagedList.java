@@ -1,5 +1,4 @@
-package guru.sfg.brewery.model;
-
+package guru.springframework.msscbeerservice.web.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by jt on 2019-05-12.
+ * @author Marcelo dos Santos
  */
 public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
 

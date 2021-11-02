@@ -1,4 +1,4 @@
-package guru.sfg.brewery.model;
+package guru.springframework.msscbeerservice.web.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -16,9 +16,8 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-05-12.
+ * @author Marcelo dos Santos
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

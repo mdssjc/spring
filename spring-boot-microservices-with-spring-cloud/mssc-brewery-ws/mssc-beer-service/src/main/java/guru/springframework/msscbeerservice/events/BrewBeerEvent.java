@@ -1,10 +1,10 @@
-package guru.sfg.brewery.model.events;
+package guru.springframework.msscbeerservice.events;
 
-import guru.sfg.brewery.model.BeerDto;
+import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 /**
- * Created by jt on 2019-07-21.
+ * @author Marcelo dos Santos
  */
 @NoArgsConstructor
 public class BrewBeerEvent extends BeerEvent {
