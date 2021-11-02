@@ -1,4 +1,4 @@
-package guru.springframework.msscbeerservice.events;
+package guru.sfg.common.events;
 
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.NoArgsConstructor;
@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
  * @author Marcelo dos Santos
  */
 @NoArgsConstructor
-public class BrewBeerEvent extends BeerEvent {
+public class NewInventoryEvent extends BeerEvent {
 
-    public BrewBeerEvent(BeerDto beerDto) {
+    public NewInventoryEvent(BeerDto beerDto) {
         super(beerDto);
     }
 }
