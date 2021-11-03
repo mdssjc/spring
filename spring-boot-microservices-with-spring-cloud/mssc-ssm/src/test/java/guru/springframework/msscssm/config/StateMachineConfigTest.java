@@ -10,6 +10,9 @@ import org.springframework.statemachine.config.StateMachineFactory;
 
 import java.util.UUID;
 
+/**
+ * @author Marcelo dos Santos
+ */
 @SpringBootTest
 class StateMachineConfigTest {
 
