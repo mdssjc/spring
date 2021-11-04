@@ -34,7 +34,6 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<PaymentSta
     private final Action<PaymentState, PaymentEvent> authApprovedAction;
     private final Action<PaymentState, PaymentEvent> authDeclinedAction;
 
-
     @Override
     public void configure(StateMachineStateConfigurer<PaymentState, PaymentEvent> states) throws Exception {
         states.withStates()
