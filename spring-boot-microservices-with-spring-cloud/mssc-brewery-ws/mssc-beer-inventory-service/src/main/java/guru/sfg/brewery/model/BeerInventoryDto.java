@@ -1,4 +1,4 @@
-package guru.sfg.beer.inventory.service.web.model;
+package guru.sfg.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,13 +9,14 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-05-31.
+ * @author Marcelo dos Santos
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class BeerInventoryDto {
+
     private UUID id;
     private OffsetDateTime createdDate;
     private OffsetDateTime lastModifiedDate;
