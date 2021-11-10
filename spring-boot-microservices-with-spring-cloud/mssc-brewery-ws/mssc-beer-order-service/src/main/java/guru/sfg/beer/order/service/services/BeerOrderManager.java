@@ -11,5 +11,5 @@ public interface BeerOrderManager {
 
     BeerOrder newBeerOrder(BeerOrder beerOrder);
 
-    void processValidationResult(UUID id, boolean isValid);
+    void processValidationResult(UUID beerOrderId, boolean isValid);
 }
