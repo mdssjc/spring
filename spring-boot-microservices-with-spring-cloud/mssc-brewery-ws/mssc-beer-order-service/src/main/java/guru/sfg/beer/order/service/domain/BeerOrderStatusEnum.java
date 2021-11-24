@@ -11,6 +11,7 @@ public enum BeerOrderStatusEnum {
     ALLOCATED,
     ALLOCATION_PENDING,
     ALLOCATION_EXCEPTION,
+    CANCELLED,
     PENDING_INVENTORY,
     READY,
     PICKED_UP,
