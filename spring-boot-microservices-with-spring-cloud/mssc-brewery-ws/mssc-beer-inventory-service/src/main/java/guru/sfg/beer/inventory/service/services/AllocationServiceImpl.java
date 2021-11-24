@@ -37,7 +37,7 @@ public class AllocationServiceImpl implements AllocationService {
             totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ? beerOrderLine.getQuantityAllocated() : 0));
         });
 
-        log.debug("Total Ordered: " + totalOrdered.get() + " Total Allocated: " + totalAllocated.get());
+        log.debug("Total Ordered: {} Total Allocated: {}", totalOrdered.get(), totalAllocated.get());
 
         return totalOrdered.get() == totalAllocated.get();
     }
@@ -79,7 +79,7 @@ public class AllocationServiceImpl implements AllocationService {
 
             BeerInventory savedInventory = repository.save(beerInventory);
 
-            log.debug("Saved Inventory for beer upc: " + savedInventory.getUpc() + " inventory id: " + savedInventory.getId());
+            log.debug("Saved Inventory for beer upc: {} inventory id: {}", savedInventory.getUpc(), savedInventory.getId());
         });
     }
 }
