@@ -7,6 +7,7 @@ import guru.sfg.beer.order.service.repositories.CustomerRepository;
 import guru.sfg.brewery.model.BeerOrderDto;
 import guru.sfg.brewery.model.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +40,7 @@ public class TastingRoomService {
     }
 
     @Transactional
+    @Scheduled(fixedRate = 2000)
     public void placeTastingRoomOrder() {
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM);
 
@@ -46,6 +48,8 @@ public class TastingRoomService {
             doPlaceOrder(customerList.get(0));
         } else {
             log.error("Too many or too few tasting room customers found");
+
+            customerList.forEach(customer -> log.debug(customer.toString()));
         }
     }
 

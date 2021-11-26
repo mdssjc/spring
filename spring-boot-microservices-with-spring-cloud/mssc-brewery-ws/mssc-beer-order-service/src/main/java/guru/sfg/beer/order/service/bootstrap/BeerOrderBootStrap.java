@@ -30,13 +30,12 @@ public class BeerOrderBootStrap implements CommandLineRunner {
     }
 
     private void loadCustomerData() {
-        if (customerRepository.count() == 0) {
-            Customer savedCustomer = customerRepository.save(Customer.builder()
-                    .customerName(TASTING_ROOM)
+        if (customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM).size() == 0) {
+            Customer savedCustomer = customerRepository.saveAndFlush(Customer.builder().customerName(TASTING_ROOM)
                     .apiKey(UUID.randomUUID())
                     .build());
 
-            log.debug("Tasting Room Customer Id: " + savedCustomer.getId().toString());
+            log.debug("Tasting Room Customer Id: {}", savedCustomer.getId().toString());
         }
     }
 }
