@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Created by jt on 3/7/20.
+ * @author Marcelo dos Santos
  */
 @Slf4j
 @RequiredArgsConstructor
@@ -24,7 +24,7 @@ public class BeerInventoryServiceFeign implements BeerInventoryService {
 
     @Override
     public Integer getOnhandInventory(UUID beerId) {
-        log.debug("Calling Inventory Service - BeerId: " + beerId);
+        log.debug("Calling Inventory Service - BeerId: {}", beerId);
 
         ResponseEntity<List<BeerInventoryDto>> responseEntity = inventoryServiceFeignClient.getOnhandInventory(beerId);
 
@@ -33,7 +33,7 @@ public class BeerInventoryServiceFeign implements BeerInventoryService {
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)
                 .sum();
 
-        log.debug("BeerId: " + beerId + " On hand is: " + onHand);
+        log.debug("BeerId: {} On hand is: {}", beerId, onHand);
 
         return onHand;
     }

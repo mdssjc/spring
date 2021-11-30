@@ -17,11 +17,11 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * Created by jt on 2019-06-07.
+ * @author Marcelo dos Santos
  */
 @Profile("!local-discovery")
 @Slf4j
-@ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = true)
+@ConfigurationProperties(prefix = "sfg.brewery")
 @Component
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
@@ -36,7 +36,7 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
 
     public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder,
                                                 @Value("${sfg.brewery.inventory-user}") String inventoryUser,
-                                                @Value("${sfg.brewery.inventory-password}")String inventoryPassword) {
+                                                @Value("${sfg.brewery.inventory-password}") String inventoryPassword) {
         this.restTemplate = restTemplateBuilder
                 .basicAuthentication(inventoryUser, inventoryPassword)
                 .build();
@@ -44,19 +44,16 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
 
     @Override
     public Integer getOnhandInventory(UUID beerId) {
-
         log.debug("Calling Inventory Service");
 
         ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate
                 .exchange(beerInventoryServiceHost + INVENTORY_PATH, HttpMethod.GET, null,
-                        new ParameterizedTypeReference<List<BeerInventoryDto>>(){}, (Object) beerId);
+                        new ParameterizedTypeReference<>() {
+                        }, beerId);
 
-        //sum from inventory list
-        Integer onHand = Objects.requireNonNull(responseEntity.getBody())
+        return Objects.requireNonNull(responseEntity.getBody())
                 .stream()
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)
                 .sum();
-
-        return onHand;
     }
 }
