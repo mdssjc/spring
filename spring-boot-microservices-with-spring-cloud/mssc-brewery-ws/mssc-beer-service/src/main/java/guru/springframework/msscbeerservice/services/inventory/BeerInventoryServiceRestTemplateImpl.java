@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 @Profile("!local-discovery")
 @Slf4j
-@ConfigurationProperties(prefix = "sfg.brewery")
+@ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = true)
 @Component
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
