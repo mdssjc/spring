@@ -10,12 +10,10 @@
     </parent>
 
     <groupId>guru.sfg.brewery</groupId>
-
     <artifactId>mssc-inventory-failover</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>mssc-inventory-failover</name>
-
     <description>Inventory Failover Service</description>
 
     <dependencies>
@@ -42,5 +40,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
