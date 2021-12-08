@@ -8,9 +8,11 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>guru.sfg.brewery</groupId>
 	<artifactId>mssc-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>mssc-config-server</name>
 	<description>Brewery Config Server</description>
 
