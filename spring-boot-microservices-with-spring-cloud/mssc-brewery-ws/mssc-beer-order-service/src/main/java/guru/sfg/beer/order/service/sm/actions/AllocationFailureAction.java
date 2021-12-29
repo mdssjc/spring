@@ -20,7 +20,7 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class AllocationFailure implements Action<BeerOrderStatusEnum, BeerOrderEventEnum> {
+public class AllocationFailureAction implements Action<BeerOrderStatusEnum, BeerOrderEventEnum> {
 
     private final JmsTemplate jmsTemplate;
 
